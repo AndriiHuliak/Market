@@ -13,9 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//FRONTEND SECTION
+
+Route::get('/', [App\Http\Controllers\Frontend\IndexController::class, 'home'])->name('home');
+
+
+//END FRONTEND SECTION
+
+
 
 Auth::routes(['register'=>false]);
 
