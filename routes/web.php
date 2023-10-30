@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\Frontend\IndexController::class, 'home'])->name('home');
 
+//Product category
+Route::get('product-category/{slug}/', [App\Http\Controllers\Frontend\IndexController::class, 'productCategory'])->name('product.category');
+
 
 //END FRONTEND SECTION
 
