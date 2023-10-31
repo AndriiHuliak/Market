@@ -80,8 +80,8 @@
                 <div class="col-12">
                     <h5>Shop Grid</h5>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item active">Shop Grid</li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                        <li class="breadcrumb-item active">{{ $categories->title }}</li>
                     </ol>
                 </div>
             </div>
@@ -154,7 +154,7 @@
 		                                        </div>
 
 		                                        <p class="brand_name">{{ \App\Models\Brand::where('id', $item->brand_id)->value('title') }}</p>
-		                                        <a href="#">{{ ucfirst($item->title) }}</a>
+		                                        <a href="{{ route('product.detail',$item->slug) }}">{{ ucfirst($item->title) }}</a>
 		                                        <h6 class="product-price">${{ number_format($item->offer_price, 2) }} <small><del class="text-danger">${{ number_format($item->price, 2) }}</del></small></h6>
 		                                    </div>
 		                                </div>
