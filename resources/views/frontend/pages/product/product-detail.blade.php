@@ -390,6 +390,7 @@
     <!-- Single Product Details Area End -->
 
     <!-- Related Products Area -->
+    @if(count($product->rel_prods)>0)
     <section class="you_may_like_area section_padding_0_100 clearfix">
         <div class="container">
             <div class="row">
@@ -403,336 +404,56 @@
                 <div class="col-12">
                     <div class="you_make_like_slider owl-carousel">
                         <!-- Single Product -->
-                        <div class="single-product-area">
-                            <div class="product_image">
-                                <!-- Product Image -->
-                                <img class="normal_img" src="img/product-img/new-1-back.png" alt="">
-                                <img class="hover_img" src="img/product-img/new-1.png" alt="">
+                        @foreach($product->rel_prods as $item)
+	                        @if($item->id != $product->id)
+	                        	<div class="single-product-area">
+	                            <div class="product_image">
+	                                <!-- Product Image -->
+	                                @php
+                                        $photo=explode(',',$item->photo);
+                                    @endphp
+	                                <img class="normal_img" src="{{ $photo[0] }}" alt="">
 
-                                <!-- Product Badge -->
-                                <div class="product_badge">
-                                    <span>New</span>
-                                </div>
+	                                <!-- Product Badge -->
+	                                <div class="product_badge">
+	                                    <span>{{ $item->condition }}</span>
+	                                </div>
 
-                                <!-- Wishlist -->
-                                <div class="product_wishlist">
-                                    <a href="wishlist.html"><i class="icofont-heart"></i></a>
-                                </div>
+	                                <!-- Wishlist -->
+	                                <div class="product_wishlist">
+	                                    <a href="wishlist.html"><i class="icofont-heart"></i></a>
+	                                </div>
 
-                                <!-- Compare -->
-                                <div class="product_compare">
-                                    <a href="compare.html"><i class="icofont-exchange"></i></a>
-                                </div>
-                            </div>
+	                                <!-- Compare -->
+	                                <div class="product_compare">
+	                                    <a href="compare.html"><i class="icofont-exchange"></i></a>
+	                                </div>
+	                            </div>
 
-                            <!-- Product Description -->
-                            <div class="product_description">
-                                <!-- Add to cart -->
-                                <div class="product_add_to_cart">
-                                    <a href="#"><i class="icofont-shopping-cart"></i> Add to Cart</a>
-                                </div>
+	                            <!-- Product Description -->
+	                            <div class="product_description">
+	                                <!-- Add to cart -->
+	                                <div class="product_add_to_cart">
+	                                    <a href="#"><i class="icofont-shopping-cart"></i> Add to Cart</a>
+	                                </div>
 
-                                <!-- Quick View -->
-                                <div class="product_quick_view">
-                                    <a href="#" data-toggle="modal" data-target="#quickview"><i class="icofont-eye-alt"></i> Quick View</a>
-                                </div>
+	                                <!-- Quick View -->
+	                                <div class="product_quick_view">
+	                                    <a href="#" data-toggle="modal" data-target="#quickview"><i class="icofont-eye-alt"></i> Quick View</a>
+	                                </div>
 
-                                <p class="brand_name">Top</p>
-                                <a href="#">Boutique Silk Dress</a>
-                                <h6 class="product-price">$48.99</h6>
-                            </div>
-                        </div>
-
-                        <!-- Single Product -->
-                        <div class="single-product-area">
-                            <div class="product_image">
-                                <!-- Product Image -->
-                                <img class="normal_img" src="img/product-img/new-6.png" alt="">
-                                <img class="hover_img" src="img/product-img/new-6-back.png" alt="">
-
-                                <!-- Product Badge -->
-                                <div class="product_badge">
-                                    <span>New</span>
-                                </div>
-
-                                <!-- Wishlist -->
-                                <div class="product_wishlist">
-                                    <a href="wishlist.html"><i class="icofont-heart"></i></a>
-                                </div>
-
-                                <!-- Compare -->
-                                <div class="product_compare">
-                                    <a href="compare.html"><i class="icofont-exchange"></i></a>
-                                </div>
-                            </div>
-
-                            <!-- Product Description -->
-                            <div class="product_description">
-                                <!-- Add to cart -->
-                                <div class="product_add_to_cart">
-                                    <a href="#"><i class="icofont-shopping-cart"></i> Add to Cart</a>
-                                </div>
-
-                                <!-- Quick View -->
-                                <div class="product_quick_view">
-                                    <a href="#" data-toggle="modal" data-target="#quickview"><i class="icofont-eye-alt"></i> Quick View</a>
-                                </div>
-
-                                <p class="brand_name">Lim</p>
-                                <a href="#">Gracia Plaid Dress</a>
-                                <h6 class="product-price">$17.63</h6>
-                            </div>
-                        </div>
-
-                        <!-- Single Product -->
-                        <div class="single-product-area">
-                            <div class="product_image">
-                                <!-- Product Image -->
-                                <img class="normal_img" src="img/product-img/new-2.png" alt="">
-                                <img class="hover_img" src="img/product-img/new-2-back.png" alt="">
-
-                                <!-- Product Badge -->
-                                <div class="product_badge">
-                                    <span>New</span>
-                                </div>
-
-                                <!-- Wishlist -->
-                                <div class="product_wishlist">
-                                    <a href="wishlist.html"><i class="icofont-heart"></i></a>
-                                </div>
-
-                                <!-- Compare -->
-                                <div class="product_compare">
-                                    <a href="compare.html"><i class="icofont-exchange"></i></a>
-                                </div>
-                            </div>
-
-                            <!-- Product Description -->
-                            <div class="product_description">
-                                <!-- Add to cart -->
-                                <div class="product_add_to_cart">
-                                    <a href="#"><i class="icofont-shopping-cart"></i> Add to Cart</a>
-                                </div>
-
-                                <!-- Quick View -->
-                                <div class="product_quick_view">
-                                    <a href="#" data-toggle="modal" data-target="#quickview"><i class="icofont-eye-alt"></i> Quick View</a>
-                                </div>
-
-                                <p class="brand_name">Sarah</p>
-                                <a href="#">Flower Textured Dress</a>
-                                <h6 class="product-price">$24 <span>$49</span></h6>
-                            </div>
-                        </div>
-
-                        <!-- Single Product -->
-                        <div class="single-product-area">
-                            <div class="product_image">
-                                <!-- Product Image -->
-                                <img class="normal_img" src="img/product-img/new-4.png" alt="">
-                                <img class="hover_img" src="img/product-img/new-4-back.png" alt="">
-
-                                <!-- Product Badge -->
-                                <div class="product_badge">
-                                    <span>New</span>
-                                </div>
-
-                                <!-- Wishlist -->
-                                <div class="product_wishlist">
-                                    <a href="wishlist.html"><i class="icofont-heart"></i></a>
-                                </div>
-
-                                <!-- Compare -->
-                                <div class="product_compare">
-                                    <a href="compare.html"><i class="icofont-exchange"></i></a>
-                                </div>
-                            </div>
-
-                            <!-- Product Description -->
-                            <div class="product_description">
-                                <!-- Add to cart -->
-                                <div class="product_add_to_cart">
-                                    <a href="#"><i class="icofont-shopping-cart"></i> Add to Cart</a>
-                                </div>
-
-                                <!-- Quick View -->
-                                <div class="product_quick_view">
-                                    <a href="#" data-toggle="modal" data-target="#quickview"><i class="icofont-eye-alt"></i> Quick View</a>
-                                </div>
-
-                                <p class="brand_name">Lim</p>
-                                <a href="#">Gracia Plaid Dress</a>
-                                <h6 class="product-price">$78.24</h6>
-                            </div>
-                        </div>
-
-                        <!-- Single Product -->
-                        <div class="single-product-area">
-                            <div class="product_image">
-                                <!-- Product Image -->
-                                <img class="normal_img" src="img/product-img/new-1-back.png" alt="">
-                                <img class="hover_img" src="img/product-img/new-1.png" alt="">
-
-                                <!-- Product Badge -->
-                                <div class="product_badge">
-                                    <span>New</span>
-                                </div>
-
-                                <!-- Wishlist -->
-                                <div class="product_wishlist">
-                                    <a href="wishlist.html"><i class="icofont-heart"></i></a>
-                                </div>
-
-                                <!-- Compare -->
-                                <div class="product_compare">
-                                    <a href="compare.html"><i class="icofont-exchange"></i></a>
-                                </div>
-                            </div>
-
-                            <!-- Product Description -->
-                            <div class="product_description">
-                                <!-- Add to cart -->
-                                <div class="product_add_to_cart">
-                                    <a href="#"><i class="icofont-shopping-cart"></i> Add to Cart</a>
-                                </div>
-
-                                <!-- Quick View -->
-                                <div class="product_quick_view">
-                                    <a href="#" data-toggle="modal" data-target="#quickview"><i class="icofont-eye-alt"></i> Quick View</a>
-                                </div>
-
-                                <p class="brand_name">Top</p>
-                                <a href="#">Boutique Silk Dress</a>
-                                <h6 class="product-price">$48.99</h6>
-                            </div>
-                        </div>
-
-                        <!-- Single Product -->
-                        <div class="single-product-area">
-                            <div class="product_image">
-                                <!-- Product Image -->
-                                <img class="normal_img" src="img/product-img/new-6.png" alt="">
-                                <img class="hover_img" src="img/product-img/new-6-back.png" alt="">
-
-                                <!-- Product Badge -->
-                                <div class="product_badge">
-                                    <span>New</span>
-                                </div>
-
-                                <!-- Wishlist -->
-                                <div class="product_wishlist">
-                                    <a href="wishlist.html"><i class="icofont-heart"></i></a>
-                                </div>
-
-                                <!-- Compare -->
-                                <div class="product_compare">
-                                    <a href="compare.html"><i class="icofont-exchange"></i></a>
-                                </div>
-                            </div>
-
-                            <!-- Product Description -->
-                            <div class="product_description">
-                                <!-- Add to cart -->
-                                <div class="product_add_to_cart">
-                                    <a href="#"><i class="icofont-shopping-cart"></i> Add to Cart</a>
-                                </div>
-
-                                <!-- Quick View -->
-                                <div class="product_quick_view">
-                                    <a href="#" data-toggle="modal" data-target="#quickview"><i class="icofont-eye-alt"></i> Quick View</a>
-                                </div>
-
-                                <p class="brand_name">Lim</p>
-                                <a href="#">Gracia Plaid Dress</a>
-                                <h6 class="product-price">$17.63</h6>
-                            </div>
-                        </div>
-
-                        <!-- Single Product -->
-                        <div class="single-product-area">
-                            <div class="product_image">
-                                <!-- Product Image -->
-                                <img class="normal_img" src="img/product-img/new-2.png" alt="">
-                                <img class="hover_img" src="img/product-img/new-2-back.png" alt="">
-
-                                <!-- Product Badge -->
-                                <div class="product_badge">
-                                    <span>New</span>
-                                </div>
-
-                                <!-- Wishlist -->
-                                <div class="product_wishlist">
-                                    <a href="wishlist.html"><i class="icofont-heart"></i></a>
-                                </div>
-
-                                <!-- Compare -->
-                                <div class="product_compare">
-                                    <a href="compare.html"><i class="icofont-exchange"></i></a>
-                                </div>
-                            </div>
-
-                            <!-- Product Description -->
-                            <div class="product_description">
-                                <!-- Add to cart -->
-                                <div class="product_add_to_cart">
-                                    <a href="#"><i class="icofont-shopping-cart"></i> Add to Cart</a>
-                                </div>
-
-                                <!-- Quick View -->
-                                <div class="product_quick_view">
-                                    <a href="#" data-toggle="modal" data-target="#quickview"><i class="icofont-eye-alt"></i> Quick View</a>
-                                </div>
-
-                                <p class="brand_name">Sarah</p>
-                                <a href="#">Flower Textured Dress</a>
-                                <h6 class="product-price">$24 <span>$49</span></h6>
-                            </div>
-                        </div>
-
-                        <!-- Single Product -->
-                        <div class="single-product-area">
-                            <div class="product_image">
-                                <!-- Product Image -->
-                                <img class="normal_img" src="img/product-img/new-4.png" alt="">
-                                <img class="hover_img" src="img/product-img/new-4-back.png" alt="">
-
-                                <!-- Product Badge -->
-                                <div class="product_badge">
-                                    <span>New</span>
-                                </div>
-
-                                <!-- Wishlist -->
-                                <div class="product_wishlist">
-                                    <a href="wishlist.html"><i class="icofont-heart"></i></a>
-                                </div>
-
-                                <!-- Compare -->
-                                <div class="product_compare">
-                                    <a href="compare.html"><i class="icofont-exchange"></i></a>
-                                </div>
-                            </div>
-
-                            <!-- Product Description -->
-                            <div class="product_description">
-                                <!-- Add to cart -->
-                                <div class="product_add_to_cart">
-                                    <a href="#"><i class="icofont-shopping-cart"></i> Add to Cart</a>
-                                </div>
-
-                                <!-- Quick View -->
-                                <div class="product_quick_view">
-                                    <a href="#" data-toggle="modal" data-target="#quickview"><i class="icofont-eye-alt"></i> Quick View</a>
-                                </div>
-
-                                <p class="brand_name">Lim</p>
-                                <a href="#">Gracia Plaid Dress</a>
-                                <h6 class="product-price">$78.24</h6>
-                            </div>
-                        </div>
+                                	<p class="brand_name">{{ \App\Models\Brand::where('id', $item->brand_id)->value('title') }}</p>
+                                    <a href="{{ route('product.detail',$item->slug) }}">{{ ucfirst($item->title) }}</a>
+                                    <h6 class="product-price">${{ number_format($item->offer_price, 2) }} <small><del class="text-danger">${{ number_format($item->price, 2) }}</del></small></h6>
+	                            </div>
+	                        </div>
+	                        @endif
+	                    @endforeach
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    @endif
     <!-- Related Products Area -->
 @endsection

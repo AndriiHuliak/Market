@@ -15,4 +15,9 @@ class Product extends Model
     {
         return $this->belongsTo(Brand::class);
     }
+
+    public function rel_prods()
+    {
+        return $this->hasMany(Product::class, 'cat_id', 'cat_id')->where('status', 'active')->limit(10);
+    }
 }

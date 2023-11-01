@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 //FRONTEND SECTION
 
+//authentication
+Route::get('user/auth', [App\Http\Controllers\Frontend\IndexController::class, 'userAuth'])->name('user.auth');
+
 Route::get('/', [App\Http\Controllers\Frontend\IndexController::class, 'home'])->name('home');
 
 //Product category
@@ -30,7 +33,7 @@ Route::get('product-detail/{slug}/', [App\Http\Controllers\Frontend\IndexControl
 
 Auth::routes(['register'=>false]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['prefix'=>'admin', 'middleware'=>'auth'], function(){
     Route::get('/', [App\Http\Controllers\AdminController::class, 'admin'])->name('admin');
