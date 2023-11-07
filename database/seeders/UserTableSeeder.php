@@ -29,11 +29,11 @@ class UserTableSeeder extends Seeder
             ],
             //Vendor
             [
-                'full_name'=>'Andrii Vendor',
-                'username'=>'Vendor',
-                'email'=>'vendor@gmail.com',
+                'full_name'=>'Andrii Seller',
+                'username'=>'Seller',
+                'email'=>'seller@gmail.com',
                 'password'=>Hash::make('1111'),
-                'role'=>'vendor',
+                'role'=>'seller',
                 'status'=>'active',
             ],
             //Customer

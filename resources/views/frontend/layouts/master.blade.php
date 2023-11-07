@@ -21,6 +21,13 @@
 
     <!-- Header Area End -->
 
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                @include('backend.layouts.notification')
+            </div>
+        </div>
+    </div>
     
     <!-- *** Content *** -->
 
