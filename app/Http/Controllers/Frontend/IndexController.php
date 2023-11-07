@@ -23,10 +23,49 @@ class IndexController extends Controller
         return view('frontend.index', compact(['banners', 'categories']));
     }
 
-    public function productCategory($slug)
+    public function productCategory(Request $request, $slug)
     {
         $categories=Category::with('products')->where('slug',$slug)->first();
-        return view('frontend.pages.product.product-category', compact(['categories']));
+
+        $sort='';
+
+        if ($request->sort !=null) {
+            $sort=$request->sort;
+        }
+        if ($categories==null) {
+            return view('errors.404');
+        }
+        else{
+            if ($sort=='priceAsc') {
+                $products=Product::where(['status'=>'active', 'cat_id'=>$categories->id])->orderBy('offer_price', 'ASC')->paginate(12);
+            }
+            elseif ($sort=='priceDesc') {
+                $products=Product::where(['status'=>'active', 'cat_id'=>$categories->id])->orderBy('offer_price', 'DESC')->paginate(12);
+            }
+            elseif ($sort=='discAsc') {
+                $products=Product::where(['status'=>'active', 'cat_id'=>$categories->id])->orderBy('price', 'ASC')->paginate(12);
+            }
+            elseif ($sort=='discDesc') {
+                $products=Product::where(['status'=>'active', 'cat_id'=>$categories->id])->orderBy('price', 'DESC')->paginate(12);
+            }
+            elseif ($sort=='titleAsc') {
+                $products=Product::where(['status'=>'active', 'cat_id'=>$categories->id])->orderBy('title', 'ASC')->paginate(12);
+            }
+            elseif ($sort=='titleDesc') {
+                $products=Product::where(['status'=>'active', 'cat_id'=>$categories->id])->orderBy('title', 'DESC')->paginate(12);
+            }
+            else{
+                $products=Product::where(['status'=>'active', 'cat_id'=>$categories->id])->paginate(12);
+            }
+        }
+
+        $route='product-category';
+
+        if ($request->ajax()) {
+            $view=view('frontend.logouts._single-product', compact('products'))->render();
+            return response()->json(['html'=>$view]);
+        }
+        return view('frontend.pages.product.product-category', compact(['categories', 'route', 'products']));
     }
 
     public function productDetail($slug)
