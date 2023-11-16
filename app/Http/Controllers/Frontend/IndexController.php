@@ -165,6 +165,57 @@ class IndexController extends Controller
         $user=Auth::user();
         return view('frontend.user.account', compact('user'));
     }
+
+    public function billingAddress(Request $request, $id)
+    {
+        $user=User::where('id', $id)->update(['country'=>$request->country,'city'=>$request->city,'postcode'=>$request->postcode,'address'=>$request->address,'state'=>$request->state,]);
+        if ($user) {
+            return back()->with('success', 'Billing Address Successfully updated!');
+        }else{
+            return back()->with('error', 'Something went wrong!');
+        }
+    }
+
+    public function shippingAddress(Request $request, $id)
+    {
+        $user=User::where('id', $id)->update(['scountry'=>$request->scountry,'scity'=>$request->scity,'spostcode'=>$request->spostcode,'saddress'=>$request->saddress,'sstate'=>$request->sstate,]);
+        if ($user) {
+            return back()->with('success', 'Shipping Address Successfully updated!');
+        }else{
+            return back()->with('error', 'Something went wrong!');
+        }
+    }
+
+    public function updateAccount(Request $request, $id)
+    {
+        $this->validate($request,[
+            'newpassword'=>'nullable|min:4',
+            'oldpassword'=>'nullable|min:4',
+            'full_name'=>'required|string',
+            'username'=>'nullable|string',
+            'phone'=>'nullable|min:8',
+        ]);
+
+        $hashpassword=Auth::user()->password;
+
+        if ($request->oldpassword==null && $request->newpassword==null) {
+            User::where('id', $id)->update(['full_name'=>$request->full_name,'username'=>$request->username,'phone'=>$request->phone,]);
+            return back()->with('success', 'Account Successfully updated');
+        }
+        else{
+            if (\Hash::check($request->oldpassword,$hashpassword)) {
+                if (!\Hash::check($request->newpassword,$hashpassword)) {
+                    User::where('id', $id)->update(['full_name'=>$request->full_name,'username'=>$request->username,'phone'=>$request->phone, 'password'=>Hash::make($request->newpassword),]);
+                    return back()->with('success', 'Account Successfully updated');
+                }else{
+                    return back()->with('error', 'New password can be same with old password');
+                }
+            }
+            else{
+                return back()->with('error', 'Old password does not match');
+            }
+        }
+    }
 }
 
 
