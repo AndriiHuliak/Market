@@ -32,6 +32,11 @@ Route::get('product-category/{slug}/', [App\Http\Controllers\Frontend\IndexContr
 //Product detail
 Route::get('product-detail/{slug}/', [App\Http\Controllers\Frontend\IndexController::class, 'productDetail'])->name('product.detail');
 
+//Cart section
+Route::post('cart/store', [App\Http\Controllers\Frontend\CartController::class, 'cartStore'])->name('cart.store');
+Route::post('cart/delete', [App\Http\Controllers\Frontend\CartController::class, 'cartDelete'])->name('cart.delete');
+
+
 
 //END FRONTEND SECTION
 

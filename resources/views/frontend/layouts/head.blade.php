@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/magnific-popup.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/fontawesome-all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/icofont.min.css') }}">
-
+    
 
     <!-- Style CSS -->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}">
