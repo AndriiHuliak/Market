@@ -9,6 +9,10 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 
 class CartController extends Controller
 {
+    public function cart()
+    {
+        return view('frontend.pages.cart.index');
+    }
     public function cartStore(Request $request)
     {
         $product_qty=$request->input('product_qty');
